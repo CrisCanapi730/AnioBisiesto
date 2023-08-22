@@ -1,15 +1,17 @@
-import sumar from "./sumador";
+import esBisiesto from "./anioBisiesto";
 
-const first = document.querySelector("#primer-numero");
-const second = document.querySelector("#segundo-numero");
-const form = document.querySelector("#sumar-form");
+const yearInput = document.querySelector("#year-input");
+const form = document.querySelector("#bisiesto-form");
 const div = document.querySelector("#resultado-div");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const firstNumber = Number.parseInt(first.value);
-  const secondNumber = Number.parseInt(second.value);
+  const year = Number.parseInt(yearInput.value);
 
-  div.innerHTML = "<p>" + sumar(firstNumber, secondNumber) + "</p>";
+  if (esBisiesto(year)) {
+    div.innerHTML = "<p>El año " + year + " es bisiesto.</p>";
+  } else {
+    div.innerHTML = "<p>El año " + year + " no es bisiesto.</p>";
+  }
 });
